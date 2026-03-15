@@ -184,6 +184,14 @@ body {
   border-radius: 1rem;
 }
 
+.transaction-value-income {
+  color: #1d4ed8 !important;
+}
+
+.transaction-value-expense {
+  color: #dc2626 !important;
+}
+
 .page-fade {
   animation: page-fade 220ms ease-out;
 }

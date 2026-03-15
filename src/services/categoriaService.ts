@@ -4,6 +4,10 @@ import type {
   CategoriaFormValues,
   FinalidadeCategoria,
 } from "../types/categoriaTypes";
+import type {
+  CategoriaResumo,
+  ResumoResponse,
+} from "../types/resumoTypes";
 
 const resource = "/categoria";
 
@@ -60,5 +64,12 @@ export const categoriaService = {
 
   async remove(id: string) {
     await api.delete(`${resource}/${id}`);
+  },
+
+  async getResumo() {
+    const response = await api.get<ResumoResponse<CategoriaResumo>>(
+      `${resource}/totais`,
+    );
+    return response.data;
   },
 };

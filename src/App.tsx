@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { AppShell } from "./components/AppShell";
+import { BackgroundPage } from "./pages/BackgroundPage";
 import { CategoriaPage } from "./pages/CategoriaPage";
 import { PessoaPage } from "./pages/PessoaPage";
 import { TransacaoPage } from "./pages/TransacaoPage";
 
-type SecaoAtiva = "pessoas" | "categorias" | "transacoes";
+type SecaoAtiva = "background" | "pessoas" | "categorias" | "transacoes";
 
 function App() {
   const [secaoAtiva, setSecaoAtiva] = useState<SecaoAtiva>("pessoas");
 
   return (
     <AppShell secaoAtiva={secaoAtiva} onSecaoChange={setSecaoAtiva}>
+      {secaoAtiva === "background" && <BackgroundPage />}
       {secaoAtiva === "pessoas" && <PessoaPage />}
       {secaoAtiva === "categorias" && <CategoriaPage />}
       {secaoAtiva === "transacoes" && <TransacaoPage />}

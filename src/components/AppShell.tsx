@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
 
-type SecaoAtiva = "pessoas" | "categorias" | "transacoes";
+type SecaoAtiva = "background" | "pessoas" | "categorias" | "transacoes";
 
 interface AppShellProps {
   secaoAtiva: SecaoAtiva;
@@ -8,6 +8,10 @@ interface AppShellProps {
 }
 
 const secoes: Record<SecaoAtiva, { titulo: string; descricao: string }> = {
+  background: {
+    titulo: "Consultar valores",
+    descricao: "Consultas de totais por pessoa e categoria.",
+  },
   pessoas: {
     titulo: "Pessoas",
     descricao: "Cadastro de pessoas.",
@@ -49,6 +53,13 @@ export function AppShell({
         </section>
 
         <nav className="section-nav nav nav-pills gap-2 mb-4 flex-wrap">
+          <button
+            type="button"
+            className={`nav-link ${secaoAtiva === "background" ? "active" : ""}`}
+            onClick={() => onSecaoChange("background")}
+          >
+            Resumo
+          </button>
           <button
             type="button"
             className={`nav-link ${secaoAtiva === "pessoas" ? "active" : ""}`}

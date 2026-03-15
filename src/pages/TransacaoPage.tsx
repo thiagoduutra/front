@@ -29,6 +29,11 @@ const tipoLabel: Record<TipoTransacao, string> = {
   receita: "Receita",
 };
 
+function formatCurrencyByType(valor: number, tipo: TipoTransacao) {
+  const signal = tipo === "receita" ? "+" : "-";
+  return `${signal} ${formatCurrency(valor)}`;
+}
+
 export function TransacaoPage() {
   const transacoesState = useAsyncData(
     transacaoService.list,
@@ -217,7 +222,7 @@ export function TransacaoPage() {
 
             <div>
               <label htmlFor="transaction-description" className="form-label">
-                Descricao
+                Descrição
               </label>
               <input
                 id="transaction-description"
@@ -245,11 +250,14 @@ export function TransacaoPage() {
                   min={0.01}
                   step="0.01"
                   type="number"
-                  value={form.valor}
+                  value={form.valor === 0 ? "" : form.valor}
                   onChange={(event) =>
                     setForm((current) => ({
                       ...current,
-                      valor: Number(event.target.value),
+                      valor:
+                        event.target.value === ""
+                          ? 0
+                          : Number(event.target.value),
                     }))
                   }
                   required
@@ -381,8 +389,14 @@ export function TransacaoPage() {
                           transacao.categoriaId}
                       </td>
                       <td>{tipoLabel[transacao.tipo]}</td>
-                      <td className="text-end fw-semibold">
-                        {formatCurrency(transacao.valor)}
+                      <td
+                        className={`text-end fw-semibold ${
+                          transacao.tipo === "receita"
+                            ? "transaction-value-income"
+                            : "transaction-value-expense"
+                        }`}
+                      >
+                        {formatCurrencyByType(transacao.valor, transacao.tipo)}
                       </td>
                       <td className="text-end">
                         <div className="d-inline-flex gap-2">

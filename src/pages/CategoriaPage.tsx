@@ -118,7 +118,7 @@ export function CategoriaPage() {
           <form onSubmit={handleSubmit} className="d-grid gap-3">
             <div>
               <label htmlFor="category-description" className="form-label">
-                Descricao
+                Descrição
               </label>
               <input
                 id="category-description"

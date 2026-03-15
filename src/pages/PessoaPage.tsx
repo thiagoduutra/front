@@ -44,6 +44,11 @@ export function PessoaPage() {
     setRequestError(null);
     setFeedback(null);
 
+    if (form.idade <= 0) {
+      setRequestError("A idade deve ser maior que zero.");
+      return;
+    }
+
     try {
       if (isEditing && editingId) {
         await pessoaService.update(editingId, form);
@@ -129,13 +134,16 @@ export function PessoaPage() {
               <input
                 id="person-age"
                 className="form-control"
-                min={0}
+                min={1}
                 type="number"
-                value={form.idade}
+                value={form.idade === 0 ? "" : form.idade}
                 onChange={(event) =>
                   setForm((current) => ({
                     ...current,
-                    idade: Number(event.target.value),
+                    idade:
+                      event.target.value === ""
+                        ? 0
+                        : Number(event.target.value),
                   }))
                 }
                 required
