@@ -1,73 +1,48 @@
-# React + TypeScript + Vite
+# Controle de Gastos Residenciais - Front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicacao React com TypeScript responsÁvel pela interface do sistema de controle de gastos residenciais.
 
-Currently, two official plugins are available:
+## Visao geral
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Este projeto contÉm a camada web do sistema e consome uma Web API em .NET.
+O objetivo do front e permitir:
 
-## React Compiler
+- cadastro e listagem de pessoas
+- cadastro e listagem de categorias
+- cadastro e listagem de transacoes
+- consulta de totais por pessoa
+- consulta de totais por categoria
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Estrutura do projeto
 
-## Expanding the ESLint configuration
+O codigo foi separado para facilitar manutencao e leitura:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- `src/pages`: telas principais
+- `src/components`: componentes visuais reutilizaveis
+- `src/services`: chamadas para a API
+- `src/types`: contratos tipados do front
+- `src/hooks`: logica reutilizavel de estado e carregamento
+- `src/utils`: formatacao e tratamento auxiliar
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tecnologias utilizadas
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- React
+- TypeScript
+- Vite
+- Bootstrap
+- Axios
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Pre-requisitos
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Antes de executar o projeto, voce precisa ter:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Node.js 20+ instalado
+- npm instalado
+- Web API do projeto rodando localmente
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Instalacao
+
+Dentro da pasta `front`, execute:
+
+- npm i 
+- npm run dev
