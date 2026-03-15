@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
 
-type SecaoAtiva = "pessoas" | "categorias";
+type SecaoAtiva = "pessoas" | "categorias" | "transacoes";
 
 interface AppShellProps {
   secaoAtiva: SecaoAtiva;
@@ -15,6 +15,10 @@ const secoes: Record<SecaoAtiva, { titulo: string; descricao: string }> = {
   categorias: {
     titulo: "Categorias",
     descricao: "Cadastro de categorias.",
+  },
+  transacoes: {
+    titulo: "Transações",
+    descricao: "Cadastro de transações.",
   },
 };
 
@@ -32,7 +36,7 @@ export function AppShell({
           <div className="row align-items-center g-4">
             <div className="col-lg-8">
               <h1 className="stat-card p-3 h-100">
-                Controle de gastos residenciais
+                Controle de gastos residênciais
               </h1>
             </div>
             <div className="col-lg-4">
@@ -58,6 +62,13 @@ export function AppShell({
             onClick={() => onSecaoChange("categorias")}
           >
             Categorias
+          </button>
+          <button
+            type="button"
+            className={`nav-link ${secaoAtiva === "transacoes" ? "active" : ""}`}
+            onClick={() => onSecaoChange("transacoes")}
+          >
+            Transações
           </button>
         </nav>
 

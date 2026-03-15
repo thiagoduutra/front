@@ -163,7 +163,7 @@ export function PessoaPage() {
       <div className="col-lg-8">
         <SectionCard
           title="Pessoas cadastradas"
-          description="A exclusão de uma pessoa remove também suas transações."
+          description="Listar Pessoas"
           action={
             <button
               type="button"

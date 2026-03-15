@@ -37,11 +37,9 @@ export function CategoriaPage() {
   const isEditing = useMemo(() => editingId !== null, [editingId]);
   const categoriasOrdenadas = useMemo(() => {
     return [...categorias].sort((firstCategory, secondCategory) =>
-      firstCategory.descricao.localeCompare(
-        secondCategory.descricao,
-        "pt-BR",
-        { sensitivity: "base" },
-      ),
+      firstCategory.descricao.localeCompare(secondCategory.descricao, "pt-BR", {
+        sensitivity: "base",
+      }),
     );
   }, [categorias]);
 
@@ -84,7 +82,7 @@ export function CategoriaPage() {
 
   async function handleDelete(categoria: Categoria) {
     const confirmed = window.confirm(
-      `Excluir ${categoria.descricao}? As transacoes vinculadas podem ser afetadas.`,
+      `Excluir ${categoria.descricao}? As transacões vinculadas podem ser afetadas.`,
     );
 
     if (!confirmed) {
@@ -110,7 +108,7 @@ export function CategoriaPage() {
       <div className="col-lg-4">
         <SectionCard
           title={isEditing ? "Editar categoria" : "Nova categoria"}
-          description="Crie ou edite categorias com descricao e finalidade."
+          description="Crie ou edite categorias com descrição e finalidade."
         >
           {feedback && <FeedbackMessage kind="success" message={feedback} />}
           {requestError && (
@@ -179,7 +177,7 @@ export function CategoriaPage() {
       <div className="col-lg-8">
         <SectionCard
           title="Categorias cadastradas"
-          description="As categorias ajudam a classificar receitas e despesas."
+          description="Listar Categorias"
           action={
             <button
               type="button"
@@ -205,9 +203,9 @@ export function CategoriaPage() {
               <table className="table align-middle">
                 <thead>
                   <tr>
-                    <th>Descricao</th>
+                    <th>Descrição</th>
                     <th>Finalidade</th>
-                    <th className="text-end">Acoes</th>
+                    <th className="text-end">Ações</th>
                   </tr>
                 </thead>
                 <tbody>
