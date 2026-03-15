@@ -12,7 +12,7 @@ const tipoParaApi: Record<TipoTransacao, number> = {
   receita: 2,
 };
 
-function fromApiTipo(value: TipoTransacao | number) {
+function fromApiTipo(value: TipoTransacao | number): TipoTransacao {
   if (value === 1) {
     return "despesa";
   }
@@ -21,7 +21,7 @@ function fromApiTipo(value: TipoTransacao | number) {
     return "receita";
   }
 
-  return value;
+  return value as TipoTransacao;
 }
 
 function normalizeTransacao(transacao: Transacao): Transacao {

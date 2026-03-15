@@ -59,7 +59,9 @@ function getNumericValue(value: unknown, propertyNames: string[]) {
   return typeof result === "number" ? result : 0;
 }
 
-function fromApiFinalidade(value: FinalidadeCategoria | number) {
+function fromApiFinalidade(
+  value: FinalidadeCategoria | number,
+): FinalidadeCategoria {
   if (value === 1) {
     return "despesa";
   }
@@ -72,7 +74,7 @@ function fromApiFinalidade(value: FinalidadeCategoria | number) {
     return "ambas";
   }
 
-  return value;
+  return value as FinalidadeCategoria;
 }
 
 function normalizeCategoria(categoria: Categoria): Categoria {
