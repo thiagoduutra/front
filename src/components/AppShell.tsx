@@ -1,6 +1,30 @@
 import type { PropsWithChildren } from "react";
 
-export function AppShell({ children }: PropsWithChildren) {
+type SecaoAtiva = "pessoas" | "categorias";
+
+interface AppShellProps {
+  secaoAtiva: SecaoAtiva;
+  onSecaoChange: (secao: SecaoAtiva) => void;
+}
+
+const secoes: Record<SecaoAtiva, { titulo: string; descricao: string }> = {
+  pessoas: {
+    titulo: "Pessoas",
+    descricao: "Cadastro de pessoas.",
+  },
+  categorias: {
+    titulo: "Categorias",
+    descricao: "Cadastro de categorias.",
+  },
+};
+
+export function AppShell({
+  secaoAtiva,
+  onSecaoChange,
+  children,
+}: PropsWithChildren<AppShellProps>) {
+  const secao = secoes[secaoAtiva];
+
   return (
     <div className="app-shell">
       <div className="container py-4 py-lg-5">
@@ -13,15 +37,28 @@ export function AppShell({ children }: PropsWithChildren) {
             </div>
             <div className="col-lg-4">
               <div className="stat-card p-3 h-100">
-                <h2 className="h4 mb-2">Pessoas</h2>
-                <p className="text-secondary mb-0">Cadastro de pessoas.</p>
+                <h2 className="h4 mb-2">{secao.titulo}</h2>
+                <p className="text-secondary mb-0">{secao.descricao}</p>
               </div>
             </div>
           </div>
         </section>
 
         <nav className="section-nav nav nav-pills gap-2 mb-4 flex-wrap">
-          <span className="nav-link active">Pessoas</span>
+          <button
+            type="button"
+            className={`nav-link ${secaoAtiva === "pessoas" ? "active" : ""}`}
+            onClick={() => onSecaoChange("pessoas")}
+          >
+            Pessoas
+          </button>
+          <button
+            type="button"
+            className={`nav-link ${secaoAtiva === "categorias" ? "active" : ""}`}
+            onClick={() => onSecaoChange("categorias")}
+          >
+            Categorias
+          </button>
         </nav>
 
         <main className="page-fade">{children}</main>

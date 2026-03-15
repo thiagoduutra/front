@@ -140,7 +140,18 @@ body {
   background-color: #ffffff;
 }
 
+.form-select {
+  border-color: #c9d5df;
+  color: var(--text-primary);
+  background-color: #ffffff;
+}
+
 .form-control:focus {
+  border-color: rgba(15, 118, 110, 0.55);
+  box-shadow: 0 0 0 0.25rem rgba(15, 118, 110, 0.14);
+}
+
+.form-select:focus {
   border-color: rgba(15, 118, 110, 0.55);
   box-shadow: 0 0 0 0.25rem rgba(15, 118, 110, 0.14);
 }
