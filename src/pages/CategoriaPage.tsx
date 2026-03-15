@@ -123,7 +123,7 @@ export function CategoriaPage() {
               <input
                 id="category-description"
                 className="form-control"
-                maxLength={200}
+                maxLength={400}
                 value={form.descricao}
                 onChange={(event) =>
                   setForm((current) => ({
@@ -194,7 +194,7 @@ export function CategoriaPage() {
           {!isLoading && categoriasOrdenadas.length === 0 && (
             <EmptyState
               title="Nenhuma categoria cadastrada"
-              description="Cadastre a primeira categoria para organizar os lancamentos."
+              description="Cadastre a primeira categoria para organizar os lançamentos."
             />
           )}
 
