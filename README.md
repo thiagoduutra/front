@@ -47,15 +47,22 @@ Dentro da pasta `front`, execute:
 - npm i 
 - npm run dev
 
-## API em producao
-
-No ambiente local, o front usa `https://localhost:7185/api`.
-
-Para publicar no GitHub Pages, defina a variavel `VITE_API_BASE_URL` com a URL publica da API:
-
-- crie um arquivo `.env` local com base em `.env.example`; ou
-- no GitHub, configure `Settings > Secrets and variables > Actions > Variables` com `VITE_API_BASE_URL`
-
 Exemplo:
 
 - `VITE_API_BASE_URL=https://sua-api-publica.exemplo.com/api`
+
+## Tecnologias utilizadas
+# Front-end
+- React
+- TypeScript
+- Vite
+- Bootstrap
+- Axios
+
+# Back-end
+- .NET 10
+- ASP.NET CORE Web API
+- Dapper
+- SQLite
+- Scalar
+
