@@ -7,6 +7,7 @@ interface AppShellProps {
   onSecaoChange: (secao: SecaoAtiva) => void;
 }
 
+// Centraliza os textos do cabecalho para manter a navegação padronizada.
 const secoes: Record<SecaoAtiva, { titulo: string; descricao: string }> = {
   background: {
     titulo: "Consultar valores",
@@ -31,6 +32,7 @@ export function AppShell({
   onSecaoChange,
   children,
 }: PropsWithChildren<AppShellProps>) {
+  // A seção ativa define o contexto visual exibido no topo da tela.
   const secao = secoes[secaoAtiva];
 
   return (

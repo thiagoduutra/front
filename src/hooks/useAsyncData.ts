@@ -27,15 +27,17 @@ export function useAsyncData<TData>(
       const nextData = await loader();
       setData(nextData);
     } catch (requestError) {
+      // Alguns endpoints sao opcionais; nesses casos mantemos o estado inicial sem erro visual.
       if (optionsRef.current?.shouldIgnoreError?.(requestError)) {
         setData(initialDataRef.current);
         setError(null);
         return;
       }
 
+      // Exibe a mensagem configurada pelo chamador ou a mensagem padrao do hook.
       setError(
         optionsRef.current?.errorMessage ??
-          "Não foi possível carregar os dados da API.",
+          "Nao foi possivel carregar os dados da API.",
       );
       throw requestError;
     } finally {

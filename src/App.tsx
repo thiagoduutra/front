@@ -8,6 +8,7 @@ import { TransacaoPage } from "./pages/TransacaoPage";
 type SecaoAtiva = "background" | "pessoas" | "categorias" | "transacoes";
 
 function App() {
+  // Controla qual modulo do sistema esta visivel na navegacao principal.
   const [secaoAtiva, setSecaoAtiva] = useState<SecaoAtiva>("pessoas");
 
   return (
